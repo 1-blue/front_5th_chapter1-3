@@ -1,9 +1,10 @@
-import { useAppContext } from "#src/hooks/useAppContext";
+import { useThemeContext } from "#src/hooks/useThemeContext";
 import Header from "#src/components/layouts/Header";
 import NotificationSystem from "#src/components/common/NotificationSystem";
+import { memo } from "#src/@lib";
 
 const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const { theme } = useAppContext();
+  const { theme } = useThemeContext();
 
   return (
     <div
@@ -16,4 +17,4 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   );
 };
 
-export default Layout;
+export default memo(Layout);

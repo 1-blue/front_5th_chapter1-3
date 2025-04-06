@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { renderLog } from "#src/utils";
-import { useAppContext } from "#src/hooks/useAppContext";
+import { useNotificationContext } from "#src/hooks/useNotificationContext";
+import { memo } from "#src/@lib";
 
 interface IFormData {
   name: string;
@@ -11,7 +12,7 @@ interface IFormData {
 
 export const ComplexForm: React.FC = () => {
   renderLog("ComplexForm rendered");
-  const { addNotification } = useAppContext();
+  const { addNotification } = useNotificationContext();
   const [formData, setFormData] = useState<IFormData>({
     name: "",
     email: "",
@@ -93,4 +94,4 @@ export const ComplexForm: React.FC = () => {
   );
 };
 
-export default ComplexForm;
+export default memo(ComplexForm);

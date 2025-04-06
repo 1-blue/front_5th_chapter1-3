@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { renderLog } from "#src/utils";
-import { useAppContext } from "#src/hooks/useAppContext";
+import { useThemeContext } from "#src/hooks/useThemeContext";
 import type { IItem } from "#src/types";
+import { memo } from "#src/@lib";
 
 interface IProps {
   items: IItem[];
@@ -11,7 +12,7 @@ interface IProps {
 export const ItemList: React.FC<IProps> = ({ items, onAddItemsClick }) => {
   renderLog("ItemList rendered");
   const [filter, setFilter] = useState("");
-  const { theme } = useAppContext();
+  const { theme } = useThemeContext();
 
   const filteredItems = items.filter(
     (item) =>
@@ -63,4 +64,4 @@ export const ItemList: React.FC<IProps> = ({ items, onAddItemsClick }) => {
   );
 };
 
-export default ItemList;
+export default memo(ItemList);
