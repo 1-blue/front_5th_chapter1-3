@@ -6,7 +6,7 @@ export const useMemo = <T>(
   factory: () => T,
   _deps: DependencyList,
   _equals = shallowEquals,
-) => {
+): T => {
   const isInitialized = useRef<boolean>(false);
   const value = useRef<T | null>(null);
   const deps = useRef<DependencyList>(_deps);
@@ -19,5 +19,5 @@ export const useMemo = <T>(
     value.current = factory();
   }
 
-  return value.current;
+  return value.current as T;
 };
