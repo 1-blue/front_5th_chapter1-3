@@ -9,6 +9,8 @@ export default mergeConfig(
     resolve: {
       alias: [{ find: "#src", replacement: path.resolve(__dirname, "src") }],
     },
+    base:
+      process.env.NODE_ENV === "production" ? "/front_5th_chapter1-3/" : "/",
   }),
   defineTestConfig({
     test: {
